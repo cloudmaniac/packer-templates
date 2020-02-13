@@ -48,7 +48,7 @@
       "vmx_data": {
         "virtualHW.version": "11",
         "scsi0.virtualDev": "lsisas1068",
-        "annotation": "Ubuntu 18.04.3 LTS (Bionic Beaver) - {{isotime \"2006-01-02\"}}",
+        "annotation": "Ubuntu 18.04.4 LTS (Bionic Beaver) - {{isotime \"2006-01-02\"}}",
         "ethernet0.networkName": "{{user `var_remote_portgroup`}}",
         "ethernet0.present": "TRUE",
         "ethernet0.startConnected": "TRUE",
