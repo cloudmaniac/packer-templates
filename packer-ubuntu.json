@@ -1,63 +1,60 @@
 {
-    "builders": [
-    {
-      "type": "vmware-iso",
-      "vm_name": "{{user `var_vm_name`}}",
-      "output_directory": "{{user `var_vm_name`}}",
-      "vmdk_name": "{{user `var_vm_name`}}",
-      "remote_type": "esx5",
-      "remote_host": "{{user `var_remote_host`}}",
-      "remote_username": "{{user `var_remote_username`}}",
-      "remote_password": "{{user `var_remote_password`}}",
-      "remote_datastore": "{{user `var_remote_datastore`}}",
-      "packer_cache_datastore": "{{user `var_remote_datastore`}}",
-      "packer_cache_directory": "{{user `var_remote_directory`}}",
-      "boot_wait": "10s",
-      "disk_size": "{{user `var_disk_size`}}",
-      "disk_type_id": "thin",
-      "guest_os_type": "ubuntu-64",
-      "iso_url": "{{user `var_iso_url`}}",
-      "iso_checksum_type": "{{user `var_iso_checksum_type`}}",
-      "iso_checksum": "{{user `var_iso_checksum`}}",
-      "communicator":"ssh",
-      "ssh_username": "{{user `var_guest_username`}}",
-      "ssh_password": "{{user `var_guest_password`}}",
-      "ssh_timeout": "20m",
-      "http_directory": ".",
-      "boot_command": [
-        "<esc><wait>",
-        "<esc><wait>",
-        "<enter><wait>",
-        "/install/vmlinuz",
-        " initrd=/install/initrd.gz",
-        " auto=true",
-        " priority=critical",
-        " debian-installer=en_US",
-        " locale=en_US",
-        " kbd-chooser/method=us",
-        " keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA console-setup/ask_detect=false",
-        " url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/floppy/ubuntu/18.04/preseed.cfg",
-        "<enter>"
-      ],
-      "shutdown_command": "echo '{{user `var_guest_password`}}' | sudo -S -E shutdown -P now",
-      "headless": true,
-      "vnc_disable_password": true,
-      "skip_compaction": false,
-      "cpus": 1,
-      "memory": 1024,
-      "vmx_data": {
-        "virtualHW.version": "11",
-        "scsi0.virtualDev": "lsisas1068",
-        "annotation": "Ubuntu 18.04.4 LTS (Bionic Beaver) - {{isotime \"2006-01-02\"}}",
-        "ethernet0.networkName": "{{user `var_remote_portgroup`}}",
-        "ethernet0.present": "TRUE",
-        "ethernet0.startConnected": "TRUE",
-        "ethernet0.virtualDev": "vmxnet3"
-      },
-      "keep_registered": true,
-      "skip_export": true
-    }],
-    "provisioners": [{
+  "builders": [
+  {
+    "type": "vsphere-iso",
+
+    "vcenter_server": "{{user `var_vsphere_vcenter`}}",
+    "username": "{{user `var_vsphere_username`}}",
+    "password": "{{user `var_vsphere_password`}}",
+    "insecure_connection": "true",
+
+    "datacenter": "{{user `var_vsphere_datacenter`}}",
+    "cluster": "{{user `var_vsphere_cluster`}}",
+    "folder": "{{user `var_vsphere_template_folder`}}",
+    "datastore": "{{user `var_vsphere_datastore`}}",
+    "network": "{{user `var_vsphere_network`}}",
+    "convert_to_template": "true",
+
+    "vm_name": "{{user `var_vm_name`}}",
+    "guest_os_type": "{{user `var_vm_guestos`}}",
+
+    "CPUs": 1,
+    "RAM": 1024,
+    "disk_controller_type":  "{{user `var_vm_disk_controller`}}",
+    "disk_size": 51200,
+    "disk_thin_provisioned": true,
+    "network_card": "vmxnet3",
+    "notes": "{{user `var_vm_notes`}}",
+
+    "communicator":"ssh",
+    "ssh_username": "{{user `var_guest_username`}}",
+    "ssh_password": "{{user `var_guest_password`}}",
+
+    "iso_urls": "{{user `var_iso_url`}}",
+    "iso_checksum_type": "{{user `var_iso_checksum_type`}}",
+    "iso_checksum": "{{user `var_iso_checksum`}}",
+
+    "floppy_files": [
+      "./floppy/ubuntu/18.04/preseed.cfg"
+    ],
+    "boot_command": [
+      "<esc><wait>",
+      "<esc><wait>",
+      "<enter><wait>",
+      "/install/vmlinuz",
+      " initrd=/install/initrd.gz",
+      " auto=true",
+      " priority=critical",
+      " debian-installer=en_US",
+      " locale=en_US",
+      " kbd-chooser/method=us",
+      " keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA console-setup/ask_detect=false",
+      " file=/media/preseed.cfg",
+      "<enter>"
+    ],
+      "shutdown_command": "echo '{{user `var_guest_password`}}' | sudo -S -E shutdown -P now"
+  }],
+  "provisioners": [{
       "type": "shell",
       "execute_command": "echo '{{user `var_guest_password`}}' | sudo -S -E bash '{{.Path}}'",
       "scripts": [
@@ -69,14 +66,5 @@
       "type": "shell",
       "inline": "echo 'Template build complete ({{isotime \"2006-01-02 03:04:05\"}})!'"
     }
-    ],
-    "post-processors": [{
-      "type": "vsphere-template",
-      "host": "{{user `var_remote_vcenter`}}",
-      "insecure": true,
-      "username": "{{user `var_vsphere_username`}}",
-      "password": "{{user `var_vsphere_password`}}",
-      "datacenter": "{{user `var_vsphere_datacenter`}}",
-      "folder": "{{user `var_vsphere_template_folder`}}"
-    }]
-  }
+  ]
+}
