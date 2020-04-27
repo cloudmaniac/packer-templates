@@ -16,11 +16,11 @@ I moved to the vsphere-iso builder for 2 main reasons:
 
 ## Usage
 
-Step 1 - Clone the git repository
+Step 1 - Clone the git repository.
 
-Step 2 - Edit the `var-ubuntu-18.04.json` or the `var-ubuntu-20.04.json` file
+Step 2 - Edit the `var-ubuntu-18.04.json` or the `var-ubuntu-20.04.json` file.
 
-Step 3 - Build the template
+Step 3 - Build the template(s).
 
-`./build-ubuntu-18.04.sh`
-`./build-ubuntu-20.04.sh`
+* `./build-ubuntu-18.04.sh`
+* `./build-ubuntu-20.04.sh`
