@@ -35,7 +35,7 @@
     "iso_checksum": "{{user `var_iso_checksum`}}",
 
     "floppy_files": [
-      "./floppy/ubuntu/18.04/preseed.cfg"
+      "./floppy/{{user `var_floppy_path`}}"
     ],
     "boot_command": [
       "<esc><wait>",
