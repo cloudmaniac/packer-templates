@@ -12,7 +12,12 @@
     "cluster": "{{user `var_vsphere_cluster`}}",
     "folder": "{{user `var_vsphere_template_folder`}}",
     "datastore": "{{user `var_vsphere_datastore`}}",
-    "network": "{{user `var_vsphere_network`}}",
+    "network_adapters": [
+      {
+        "network": "{{user `var_vsphere_network`}}",
+        "network_card": "vmxnet3"
+      }
+    ],
     "convert_to_template": "true",
 
     "vm_name": "{{user `var_vm_name`}}",
@@ -21,9 +26,12 @@
     "CPUs": 1,
     "RAM": 1024,
     "disk_controller_type":  "{{user `var_vm_disk_controller`}}",
-    "disk_size": 51200,
-    "disk_thin_provisioned": true,
-    "network_card": "vmxnet3",
+    "storage": [
+      {
+        "disk_size": 51200,
+        "disk_thin_provisioned": true
+      }
+    ],
     "notes": "{{user `var_vm_notes`}}",
 
     "communicator":"ssh",
@@ -31,8 +39,7 @@
     "ssh_password": "{{user `var_guest_password`}}",
 
     "iso_urls": "{{user `var_iso_url`}}",
-    "iso_checksum_type": "{{user `var_iso_checksum_type`}}",
-    "iso_checksum": "{{user `var_iso_checksum`}}",
+    "iso_checksum": "{{user `var_iso_checksum_type`}}:{{user `var_iso_checksum`}}",
 
     "floppy_files": [
       "./floppy/{{user `var_floppy_path`}}"
@@ -55,16 +62,16 @@
       "shutdown_command": "echo '{{user `var_guest_password`}}' | sudo -S -E shutdown -P now"
   }],
   "provisioners": [{
-      "type": "shell",
       "execute_command": "echo '{{user `var_guest_password`}}' | sudo -S -E bash '{{.Path}}'",
       "scripts": [
         "./scripts/ubuntu/update.sh",
         "./scripts/ubuntu/cleanup.sh"
-      ]
+      ],
+      "type": "shell"
     },
     {
-      "type": "shell",
-      "inline": "echo 'Template build complete ({{isotime \"2006-01-02 03:04:05\"}})!'"
+      "inline": "echo 'Template build complete ({{isotime \"2006-01-02 03:04:05\"}})!'",
+      "type": "shell"
     }
   ]
 }
