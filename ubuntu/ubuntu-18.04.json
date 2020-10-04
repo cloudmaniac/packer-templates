@@ -1,4 +1,25 @@
 {
+  "variables":
+  {
+    "author": "Romain Decker",
+    "website": "https://cloudmaniac.net",
+    "description": "Creation of a Ubuntu 18.04.5 LTS (Bionic Beaver) vSphere template",
+    "var_vm_name": "packer-ubuntu-18.04",
+    "var_vm_hostname": "packer-ubuntu-18.04",
+    "var_vm_guestos": "ubuntu64Guest",
+    "var_vm_cpu_size": "1",
+    "var_vm_ram_size": "1024",
+    "var_vm_disk_controller": "pvscsi",
+    "var_vm_disk_size": "51200",
+    "var_vm_notes": "Ubuntu 18.04.5 LTS (Bionic Beaver) - {{isotime \"2006-01-02\"}}",
+    "var_iso_url": "http://cdimage.ubuntu.com/releases/18.04/release/ubuntu-18.04.5-server-amd64.iso",
+    "var_iso_checksum_type": "sha256",
+    "var_iso_checksum": "8c5fc24894394035402f66f3824beb7234b757dd2b5531379cb310cedfdf0996",
+    "var_floppy_path": "18.04/preseed.cfg",
+    "var_guest_username": "packer",
+    "var_guest_password": "VMware1!"
+  }
+  ,
   "builders": [
   {
     "type": "vsphere-iso",
@@ -23,12 +44,12 @@
     "vm_name": "{{user `var_vm_name`}}",
     "guest_os_type": "{{user `var_vm_guestos`}}",
 
-    "CPUs": 1,
-    "RAM": 1024,
+    "CPUs": "{{user `var_vm_cpu_size`}}",
+    "RAM": "{{user `var_vm_ram_size`}}",
     "disk_controller_type":  "{{user `var_vm_disk_controller`}}",
     "storage": [
       {
-        "disk_size": 51200,
+        "disk_size": "{{user `var_vm_disk_size`}}",
         "disk_thin_provisioned": true
       }
     ],
@@ -64,8 +85,8 @@
   "provisioners": [{
       "execute_command": "echo '{{user `var_guest_password`}}' | sudo -S -E bash '{{.Path}}'",
       "scripts": [
-        "./scripts/ubuntu/update.sh",
-        "./scripts/ubuntu/cleanup.sh"
+        "./scripts/update.sh",
+        "./scripts/cleanup.sh"
       ],
       "type": "shell"
     },
