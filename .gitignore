@@ -1,5 +1,9 @@
-# Cache objects
-packer_cache/
+# Ignore cache objects
+packer_cache/*
+
+# Exception to the rule to keep the "empty" folder in the repository
+!packer_cache/.gitkeep 
+
 
 # Crash log
 crash.log
