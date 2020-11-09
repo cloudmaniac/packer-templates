@@ -6,6 +6,7 @@
     "description": "Creation of a Ubuntu 18.04.5 LTS (Bionic Beaver) vSphere template",
     "var_vm_name": "packer-ubuntu-18.04",
     "var_vm_hostname": "packer-ubuntu-18.04",
+    "var_vsphere_template_folder": "templates/packer/ubuntu",
     "var_vm_guestos": "ubuntu64Guest",
     "var_vm_cpu_size": "1",
     "var_vm_ram_size": "1024",
