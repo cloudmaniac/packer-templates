@@ -1,0 +1,19 @@
+{
+    "hostname": "packer-photon",
+    "password":
+        {
+            "crypted": false,
+            "text": "VMware1!"
+        },
+    "disk": "/dev/sda",
+    "packagelist_file": "packages_minimal.json",
+    "additional_packages": ["vim"],
+    "postinstall": [
+                        "#!/bin/sh",
+                        "sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config",
+                        "systemctl restart sshd.service"
+                   ],
+    "network": {
+        "type": "dhcp"
+    }    
+}

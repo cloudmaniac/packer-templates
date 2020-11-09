@@ -1,0 +1,8 @@
+{
+    "packages": [
+                 "minimal",
+                 "linux",
+                 "open-vm-tools",
+                 "initramfs"
+                 ]
+}
