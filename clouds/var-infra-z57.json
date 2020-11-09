@@ -4,7 +4,6 @@
   "var_vsphere_password": "VMware1!",
   "var_vsphere_datacenter": "MGMT-Z57",
   "var_vsphere_cluster": "CL01-Z57",
-  "var_vsphere_template_folder": "/templates/packer/ubuntu",
   "var_vsphere_datastore": "vsanDatastore",
   "var_vsphere_network": "PG-10.57.10.0"
 }
