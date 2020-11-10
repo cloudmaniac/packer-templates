@@ -23,11 +23,14 @@ I moved to the vsphere-iso builder for 2 main reasons:
 
 Step 1 - Clone the git repository.
 
-Step 2 - Edit the `ubuntu/ubuntu-18.04.json` file.
+Step 2 - Edit the respective JSON files, e.g. `ubuntu/ubuntu-18.04.json` file or ``.
 
-Step 3 - Build the template(s).
+Step 3 - Adapt one of the [cloud definition JSON file](https://github.com/cloudmaniac/packer-templates/tree/master/clouds) to your environment (you will find them in the `clouds` folder).
 
-* `./ubuntu/build-ubuntu-18.04.sh`
+Step 4 - Build the template(s).
+
+* Either manually by using the `packer` CLI: `packer build -var-file=../clouds/var-infra-z57.json ubuntu-18.04.json`.
+* Or by using a quick script, e.g.: `./ubuntu/build-ubuntu-18.04.sh`.
 
 ## Todo
 
