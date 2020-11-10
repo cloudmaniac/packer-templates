@@ -11,7 +11,7 @@
     "var_vm_cpu_size": "1",
     "var_vm_ram_size": "512",
     "var_vm_disk_controller": "pvscsi",
-    "var_vm_disk_size": "51200",
+    "var_vm_disk_size": "16384",
     "var_vm_notes": "Photon OS 3.0 (Revision 3) - {{isotime \"2006-01-02\"}}",
     "var_iso_url": "https://packages.vmware.com/photon/3.0/Rev2/iso/Update2/photon-minimal-3.0-a0f216d.iso",
     "var_iso_checksum_type": "sha256",

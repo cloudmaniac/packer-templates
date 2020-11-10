@@ -11,7 +11,7 @@
     "var_vm_cpu_size": "1",
     "var_vm_ram_size": "1024",
     "var_vm_disk_controller": "pvscsi",
-    "var_vm_disk_size": "51200",
+    "var_vm_disk_size": "16384",
     "var_vm_notes": "Ubuntu 18.04.5 LTS (Bionic Beaver) - {{isotime \"2006-01-02\"}}",
     "var_iso_url": "http://cdimage.ubuntu.com/releases/18.04/release/ubuntu-18.04.5-server-amd64.iso",
     "var_iso_checksum_type": "sha256",

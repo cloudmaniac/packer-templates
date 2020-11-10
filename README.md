@@ -2,6 +2,8 @@
 
 ## News
 
+(2020/11/10) Added Photon OS 3.0 template; validated usage with Packer 1.6.5.
+
 (2020/10/03) Reorganized the structure of the repository for an easier consumption (manual and through pipelines). I also validated usage with Packer 1.6.4.
 
 ~~(2020/04/27) Added support for Ubuntu 20.04 LTS (Focal Fosssa).~~
@@ -15,7 +17,7 @@ I moved to the vsphere-iso builder for 2 main reasons:
 
 ## Overview
 
-> **Note**: Ubuntu 18.04.04 LTS (Bionic Beaver) is the only template provided in this repository for now. Others coming soon, stay tuned!
+> **Note**: Ubuntu 18.04.04 LTS (Bionic Beaver) and Photon OS 3.0 are the only templates provided in this repository for now. Others coming soon, stay tuned!
 
 ## Usage
 
