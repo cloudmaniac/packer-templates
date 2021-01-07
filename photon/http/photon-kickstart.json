@@ -6,7 +6,7 @@
             "text": "VMware1!"
         },
     "disk": "/dev/sda",
-    "packagelist_file": "packages_minimal.json",
+    "packages": ["minimal", "linux", "initramfs"],
     "postinstall": [
                     "#!/bin/sh",
                     "sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config",

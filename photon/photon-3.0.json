@@ -13,9 +13,9 @@
     "var_vm_disk_controller": "pvscsi",
     "var_vm_disk_size": "16384",
     "var_vm_notes": "Photon OS 3.0 (Revision 3) - {{isotime \"2006-01-02\"}}",
-    "var_iso_url": "https://packages.vmware.com/photon/3.0/Rev2/iso/Update2/photon-minimal-3.0-a0f216d.iso",
+    "var_iso_url": "https://packages.vmware.com/photon/3.0/Rev3/iso/photon-minimal-3.0-a383732.iso",
     "var_iso_checksum_type": "sha256",
-    "var_iso_checksum": "62ef4f31e2d68af1c227bf3fbf8bc986ea55536be26b707140c29746fd0aba33",
+    "var_iso_checksum": "6854356456c2d3cc4c67ba9648bf1ebd5bfb7eccbf56b422e6856cb41fa9ab66",
     "var_guest_username": "root",
     "var_guest_password": "VMware1!"
   }
