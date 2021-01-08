@@ -31,3 +31,4 @@ rm -f /EMPTY; sync; sleep 1; sync
 # Done / Version #
 ##################
 cat /etc/photon-release
+date

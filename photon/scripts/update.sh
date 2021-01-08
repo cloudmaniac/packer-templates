@@ -9,7 +9,7 @@ tdnf install -y \
   unzip
 
 # Ping
-# tdnf install iputils
+tdnf install iputils
 
 # Misc
 # traceroute net-tools
