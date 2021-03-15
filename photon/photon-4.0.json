@@ -3,7 +3,7 @@
   {
     "author": "Romain Decker",
     "website": "https://cloudmaniac.net",
-    "description": "Creation of a Photon OS 4.0 Beta vSphere template",
+    "description": "Creation of a Photon OS 4.0 GA vSphere template",
     "var_vm_name": "packer-photon-4.0",
     "var_vm_hostname": "packer-photon-4.0",
     "var_vsphere_template_folder": "templates/packer/photon",
@@ -12,10 +12,10 @@
     "var_vm_ram_size": "512",
     "var_vm_disk_controller": "pvscsi",
     "var_vm_disk_size": "16384",
-    "var_vm_notes": "Photon OS 4.0 Beta - {{isotime \"2006-01-02\"}}",
-    "var_iso_url": "https://packages.vmware.com/photon/4.0/Beta/iso/photon-minimal-4.0-d98e681.iso",
+    "var_vm_notes": "Photon OS 4.0 GA - {{isotime \"2006-01-02\"}}",
+    "var_iso_url": "https://packages.vmware.com/photon/4.0/GA/iso/photon-minimal-4.0-1526e30ba.iso",
     "var_iso_checksum_type": "sha256",
-    "var_iso_checksum": "300f8b84dada96397bbdccc7d3213469c14a7c7834f0fba49c28c3d089494220",
+    "var_iso_checksum": "881989ea6336a98d3fcd500ee273c1323b0f8b7a9d4cfc4fed1f015b1aa85f5e",
     "var_guest_username": "root",
     "var_guest_password": "VMware1!"
   }
@@ -65,7 +65,7 @@
     "http_directory": "http",
     "boot_command": [
       "<esc><wait>",
-      "vmlinuz initrd=initrd.img root=/dev/ram0 loglevel=3 ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/photon-kickstart.json photon.media=cdrom",
+      "vmlinuz initrd=initrd.img root=/dev/ram0 loglevel=3 ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/photon-kickstart.json photon.media=cdrom insecure_installation=1",
       "<enter>"
     ],
       "shutdown_command": "shutdown -h now"
