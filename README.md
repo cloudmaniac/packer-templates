@@ -2,6 +2,8 @@
 
 ## News
 
+(2021/03/17) Added Photon OS 4.0 and Ubuntu 20.04 LTS templates; validated usage with Packer 1.7.0.
+
 (2020/11/10) Added Photon OS 3.0 template; validated usage with Packer 1.6.5.
 
 (2020/10/03) Reorganized the structure of the repository for an easier consumption (manual and through pipelines). I also validated usage with Packer 1.6.4.
@@ -17,7 +19,12 @@ I moved to the vsphere-iso builder for 2 main reasons:
 
 ## Overview
 
-> **Note**: Ubuntu 18.04.04 LTS (Bionic Beaver) and Photon OS 3.0 are the only templates provided in this repository for now. Others coming soon, stay tuned!
+> **Note**: Ubuntu and Photon OS are the only templates provided in this repository for now. Others coming soon, stay tuned!
+
+* [Photon OS 3.0](https://github.com/cloudmaniac/packer-templates/tree/master/photon)
+* [Photon OS 4.0](https://github.com/cloudmaniac/packer-templates/tree/master/photon)
+* [Ubuntu 18.04 LTS](https://github.com/cloudmaniac/packer-templates/tree/master/ubuntu)
+* [Ubuntu 20.04 LTS](https://github.com/cloudmaniac/packer-templates/tree/master/ubuntu)
 
 ## Usage
 
@@ -29,12 +36,12 @@ Step 3 - Adapt one of the [cloud definition JSON file](https://github.com/cloudm
 
 Step 4 - Build the template(s).
 
-* Either manually by using the `packer` CLI: `packer build -var-file=../clouds/var-infra-z57.json ubuntu-18.04.json`
-* Or by using a quick script, e.g.: `./ubuntu/build-ubuntu-18.04.sh`
+* Either manually by using the `packer` CLI: `packer build -var-file=../clouds/var-infra-z67.json ubuntu-20.04.json`
+* Or by using a quick script, e.g.: `./ubuntu/build-ubuntu-20.04.sh`
 
 ## Todo
 
-* Add support for additional OS (PhotonOS, Debian, CentOS, Windows)
+* Add support for additional OS (Debian, CentOS, Windows)
 * Zero the disk before export
 * Use the Content Library to store the ISOs
 * Export the result in the Content Library
