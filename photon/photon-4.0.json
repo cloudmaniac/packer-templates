@@ -3,7 +3,7 @@
   {
     "author": "Romain Decker",
     "website": "https://cloudmaniac.net",
-    "description": "Creation of a Photon OS 4.0 GA vSphere template",
+    "description": "Creation of a Photon OS 4.0 Rev 2 vSphere template",
     "var_vm_name": "packer-photon-4.0",
     "var_vm_hostname": "packer-photon-4.0",
     "var_vsphere_template_folder": "templates/packer/photon",
@@ -12,10 +12,10 @@
     "var_vm_ram_size": "512",
     "var_vm_disk_controller": "pvscsi",
     "var_vm_disk_size": "16384",
-    "var_vm_notes": "Photon OS 4.0 GA - {{isotime \"2006-01-02\"}}",
-    "var_iso_url": "https://packages.vmware.com/photon/4.0/GA/iso/photon-minimal-4.0-1526e30ba.iso",
+    "var_vm_notes": "Photon OS 4.0 Rev 2 - {{isotime \"2006-01-02\"}}",
+    "var_iso_url": "https://packages.vmware.com/photon/4.0/Rev2/iso/photon-minimal-4.0-c001795b8.iso",
     "var_iso_checksum_type": "sha256",
-    "var_iso_checksum": "881989ea6336a98d3fcd500ee273c1323b0f8b7a9d4cfc4fed1f015b1aa85f5e",
+    "var_iso_checksum": "c6a5de1098228728b5d189854f387e6fe6edb87582be4d9a4568ae0405929383",
     "var_guest_username": "root",
     "var_guest_password": "VMware1!"
   }
