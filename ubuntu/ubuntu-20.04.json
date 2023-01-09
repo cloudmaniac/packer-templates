@@ -3,7 +3,7 @@
   {
     "author": "Romain Decker",
     "website": "https://cloudmaniac.net",
-    "description": "Creation of a Ubuntu 20.04.3.0 LTS (Focal Fossa) vSphere template",
+    "description": "Creation of a Ubuntu 20.04.5.0 LTS (Focal Fossa) vSphere template",
     "var_vm_name": "packer-ubuntu-20.04",
     "var_vm_hostname": "packer-ubuntu-20.04",
     "var_vsphere_template_folder": "templates/packer/ubuntu",
@@ -11,11 +11,11 @@
     "var_vm_cpu_size": "1",
     "var_vm_ram_size": "1024",
     "var_vm_disk_controller": "pvscsi",
-    "var_vm_disk_size": "16384",
-    "var_vm_notes": "Ubuntu 20.04.3.0 LTS (Focal Fossa) - {{isotime \"2006-01-02\"}}",
-    "var_iso_url": "https://releases.ubuntu.com/20.04/ubuntu-20.04.3-live-server-amd64.iso",
+    "var_vm_disk_size": "40960",
+    "var_vm_notes": "Ubuntu 20.04.5.0 LTS (Focal Fossa) - {{isotime \"2006-01-02\"}}",
+    "var_iso_url": "https://releases.ubuntu.com/20.04/ubuntu-20.04.5-live-server-amd64.iso",
     "var_iso_checksum_type": "sha256",
-    "var_iso_checksum": "f8e3086f3cea0fb3fefb29937ab5ed9d19e767079633960ccb50e76153effc98",
+    "var_iso_checksum": "5035be37a7e9abbdc09f0d257f3e33416c1a0fb322ba860d42d74aa75c3468d4",
     "var_http_path": "20.04",
     "var_guest_username": "packer",
     "var_guest_password": "VMware1!"
@@ -40,10 +40,16 @@
         "network_card": "vmxnet3"
       }
     ],
-    "convert_to_template": "true",
+    "export": {
+      "force": true,
+      "output_directory": "./ubuntu"
+    },
+
+    "convert_to_template": "false",
 
     "vm_name": "{{user `var_vm_name`}}",
     "guest_os_type": "{{user `var_vm_guestos`}}",
+    "vm_version": 13,
 
     "CPUs": "{{user `var_vm_cpu_size`}}",
     "RAM": "{{user `var_vm_ram_size`}}",
