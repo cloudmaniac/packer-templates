@@ -1,0 +1,29 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: en_US
+  keyboard:
+    layout: en
+    variant: us
+  network:
+    network:
+      version: 2
+      ethernets:
+        ens192:
+          dhcp4: true
+  storage:
+    layout:
+      name: lvm
+  identity:
+    hostname: ubuntu-packer
+    username: packer
+    password: $6$yRp1sC9EfcWC6bg$JLJ8y/UPg6EQsyjIck78qvO6/TdA8wnzeiBPyICI2jwWtU0.sYEpyY4fSxmbVAeB74zgPdVECE/aeW4alye2X0 
+  ssh:
+    install-server: yes
+    allow-pw: true
+  user-data:
+    disable_root: false
+  late-commands:
+    - echo 'packer ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/packer
+    - sudo lvm lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+    - sudo resize2fs -p /dev/mapper/ubuntu--vg-ubuntu--lv
