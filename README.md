@@ -2,6 +2,8 @@
 
 ## News
 
+(2023/01/16) Added Ubuntu 22.04 LTS template; validated usage with Packer 1.8.5.
+
 (2021/03/17) Added Photon OS 4.0 and Ubuntu 20.04 LTS templates; validated usage with Packer 1.7.0.
 
 (2020/11/10) Added Photon OS 3.0 template; validated usage with Packer 1.6.5.
@@ -25,12 +27,13 @@ I moved to the vsphere-iso builder for 2 main reasons:
 * [Photon OS 4.0](https://github.com/cloudmaniac/packer-templates/tree/master/photon)
 * [Ubuntu 18.04 LTS](https://github.com/cloudmaniac/packer-templates/tree/master/ubuntu)
 * [Ubuntu 20.04 LTS](https://github.com/cloudmaniac/packer-templates/tree/master/ubuntu)
+* [Ubuntu 22.04 LTS](https://github.com/cloudmaniac/packer-templates/tree/master/ubuntu)
 
 ## Usage
 
 Step 1 - Clone the git repository.
 
-Step 2 - Edit the respective JSON files, e.g. `ubuntu/ubuntu-18.04.json` file or `photon/photon-3.0.json`
+Step 2 - Edit the respective JSON files, e.g. `ubuntu/ubuntu-22.04.json` file or `photon/photon-3.0.json`. For Ubuntu 20.04 and 22.04, adapt the `user-data` cloud-init file with the desired configuration ([documentation](https://ubuntu.com/server/docs/install/autoinstall-reference) for reference).
 
 Step 3 - Adapt one of the [cloud definition JSON file](https://github.com/cloudmaniac/packer-templates/tree/master/clouds) to your environment (you will find them in the `clouds` folder).
 
@@ -41,8 +44,8 @@ Step 4 - Build the template(s).
 
 ## Todo
 
+* Migrate from JSON to HCL2
 * Add support for additional OS (Debian, CentOS, Windows)
 * Zero the disk before export
 * Use the Content Library to store the ISOs
 * Export the result in the Content Library
-* Migrate from JSON to HCL2
