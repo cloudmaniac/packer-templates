@@ -1,9 +1,0 @@
-{
-  "var_vsphere_vcenter": "vcsa01.z57.sddc.lab",
-  "var_vsphere_username": "administrator@vsphere.local",
-  "var_vsphere_password": "VMware1!",
-  "var_vsphere_datacenter": "MGMT-Z57",
-  "var_vsphere_cluster": "CL01-Z57",
-  "var_vsphere_datastore": "vsanDatastore",
-  "var_vsphere_network": "PG-10.57.10.0"
-}
