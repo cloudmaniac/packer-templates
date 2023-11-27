@@ -2,6 +2,8 @@
 
 ## News
 
+(2023/01/16) Switched all templates to HCL...finally! 😅
+
 (2023/01/16) Added Ubuntu 22.04 LTS template; validated usage with Packer 1.8.5.
 
 (2021/03/17) Added Photon OS 4.0 and Ubuntu 20.04 LTS templates; validated usage with Packer 1.7.0.
@@ -23,28 +25,33 @@ I moved to the vsphere-iso builder for 2 main reasons:
 
 > **Note**: Ubuntu and Photon OS are the only templates provided in this repository for now. Others coming soon, stay tuned!
 
-* [Photon OS 3.0](https://github.com/cloudmaniac/packer-templates/tree/master/photon)
-* [Photon OS 4.0](https://github.com/cloudmaniac/packer-templates/tree/master/photon)
-* [Ubuntu 18.04 LTS](https://github.com/cloudmaniac/packer-templates/tree/master/ubuntu)
-* [Ubuntu 20.04 LTS](https://github.com/cloudmaniac/packer-templates/tree/master/ubuntu)
-* [Ubuntu 22.04 LTS](https://github.com/cloudmaniac/packer-templates/tree/master/ubuntu)
+* [Photon OS 3.0](https://github.com/cloudmaniac/packer-templates/tree/main/builds/photon/3.0)
+* [Photon OS 4.0](https://github.com/cloudmaniac/packer-templates/tree/main/builds/photon/4.0)
+* [Ubuntu 18.04 LTS](https://github.com/cloudmaniac/packer-templates/tree/main/builds/ubuntu/18.04)
+* [Ubuntu 20.04 LTS](https://github.com/cloudmaniac/packer-templates/tree/main/builds/ubuntu/20.04)
+* [Ubuntu 22.04 LTS](https://github.com/cloudmaniac/packer-templates/tree/main/builds/ubuntu/22.04)
 
 ## Usage
 
 Step 1 - Clone the git repository.
 
-Step 2 - Edit the respective JSON files, e.g. `ubuntu/ubuntu-22.04.json` file or `photon/photon-3.0.json`. For Ubuntu 20.04 and 22.04, adapt the `user-data` cloud-init file with the desired configuration ([documentation](https://ubuntu.com/server/docs/install/autoinstall-reference) for reference).
+Step 2 - Make a copy (or change) and adapt the [cloud definition file](https://github.com/cloudmaniac/packer-templates/tree/main/builds/clouds) to your environment (you will find them in the `builds/clouds` folder).
 
-Step 3 - Adapt one of the [cloud definition JSON file](https://github.com/cloudmaniac/packer-templates/tree/master/clouds) to your environment (you will find them in the `clouds` folder).
+Step 3 - Update the `buils/common.pkrvars.hcl` file with your desired user credentials (or SSH key).
 
-Step 4 - Build the template(s).
+Step 4 - Navigate to the folder that matches the operating system (and version) that you want to build. E.g.: `builds/ubuntu/22.04`.
 
-* Either manually by using the `packer` CLI: `packer build -var-file=../clouds/var-infra-z67.json ubuntu-20.04.json`
-* Or by using a quick script, e.g.: `./ubuntu/build-ubuntu-20.04.sh`
+Step 4 - From that folder, edit the respective HCL file with your values, e.g. `ubuntu-22.04.auto.pkrvars.hcl` file or `photon-4.0.auto.pkrvars.hcl`. For Ubuntu 20.04 and 22.04, adapt the `user-data` cloud-init file with the desired configuration ([documentation](https://ubuntu.com/server/docs/install/autoinstall-reference) for reference).
+
+Step 5 - Run `packer init .` to install the required plugin(s).
+
+Step 6 - Build your template with `packer build -force -var-file="../../clouds/infra-z67.pkrvars.hcl" -var-file="../../common.pkrvars.hcl" .`.
+*Note: adapt to filenames and location relevant to your environment.*
+
+Step 7 - Rinse and repeat for all templates you want to build. \o/
 
 ## Todo
 
-* Migrate from JSON to HCL2
 * Add support for additional OS (Debian, CentOS, Windows)
 * Zero the disk before export
 * Use the Content Library to store the ISOs
